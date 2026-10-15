@@ -23,6 +23,7 @@ IMA-ADPCMの導入によりデータ効率が向上し高音質化、低電圧�
 ## 📖 詳細な解説・使い方 (Documentation)
 
 回路図や書き込み手順などの詳細は元記事をご確認ください。
+
 👉 [**名張市つつじが丘おもちゃ病院 元記事を読む**](https://tutujith.blog.fc2.com/blog-entry-1075.html)
 
 - **開発プロジェクト**: `MIMIKURI\MIMIKURI_V006F8P6`
