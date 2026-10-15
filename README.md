@@ -37,11 +37,11 @@ IMA-ADPCMの導入によりデータ効率が向上し高音質化、低電圧�
 EasyEDA STDからワン・クリックで一気通貫、JLCPCBに格安発注することが出来ました。
 
 <p align="center">
-<img width="60%" alt="CH32_MIMICRY_V006F8P6" src="https://github.com/user-attachments/assets/6091e703-369f-4eb3-bf5a-bbed869c4933" />
+<img width="60%" alt="CH32_MIMICRY_V006F8P6" src="https://github.com/user-attachments/assets/4e197fb6-f337-4a52-83d9-82b19a14266c" />
   <br>
-<img width="60%" alt="261015_MIMICRY_pcb (1)" src="https://github.com/user-attachments/assets/d0744aa2-2f7d-4f40-8d10-79ca378cae6d" />
+<img width="60%" alt="261015_MIMICRY_boad (1)" src="https://github.com/user-attachments/assets/e966789d-9ce6-4ba5-a9cd-f5974ce3680f" />
   <br>
-<img width="45%" alt="261015_MIMICRY_pcb (2)" src="https://github.com/user-attachments/assets/6e60093d-239c-4266-9fc4-eb0e37551685" />
+<img width="45%" alt="261015_MIMICRY_boad (2)" src="https://github.com/user-attachments/assets/4d22de9f-427f-4e07-a99f-dbafa3f58129" />
   <br>
 </p>
 
