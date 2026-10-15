@@ -1,0 +1,167 @@
+【前振り】
+
+<a href="https://tutujith.blog.fc2.com/blog-entry-914.html" target="_blank" title="ミミクリーペット基板換装用ファームウェア（ＣＨ３２Ｖ００６Ｆ８Ｐ６）"><span style="color:#FF0000"><strong>ミミクリーペット基板換装用ファームウェア（ＣＨ３２Ｖ００６Ｆ８Ｐ６）</strong></span></a> に重大なバグがあった。
+
+バグ改修はコッソリやることが多いが、今回の内容は他の開発の参考になると思うので、詳細を報告する。
+
+
+【不具合の内容】
+
+①症状は、音声にブツブツと言ったノイズが乗っている。
+
+②原因は、フラッシュの消去／書き込み中はフラッシュへのアクセスが停止するため、録音処理で音声の取りこぼしが発生するためだ。
+
+・音声の取り込みは一定周期での実行を担保するため、ＴＩＭ１更新割り込みのＩＳＲで行っている。
+
+・ＩＳＲの起動は、先ずベクタテーブルの参照から始まるが、それがフラッシュの消去／書き込み中は待たされる。
+
+・セクタ消去は250ｕｓ×１０２４＝２５６ｍｓ毎に最大３．３ｍｓ間、ページ書き込みは250ｕｓ×２５６＝６４ｍｓ毎に最大２．０ｍｓ間に音声の取りこぼしが発生し、結果として録音音声にボツボツノイズが乗る。
+
+③解決策は、音声の取り込みで通るルートではフラッシュへアクセスしないようにする。
+
+・ベクタテーブルと関連する関数（下記）をＲＡＭに配置して実行する。
+TIM1_UP_IRQHandler　　//ＴＩＭ１更新割り込みＩＳＲ
+EEPDATA_erase　　//セクタ消去
+EEPDATA_write_end　　//ページ書き込み
+put_buf　　//リングﾊﾞｯﾌｧ書き込み
+
+・リンカスクリプト（Link.ld）でＲＡＭ領域を確保する。
+ベクタテーブル用領域
+.ram_vector (NOLOAD) :		/*shige追加*/
+{
+    . = ALIGN(4);
+    __ram_vector_start = .;
+    . += (_start_end - _start);
+    __ram_vector_end = .;
+} >RAM
+
+関連する関数用領域
+.ramfunc :		/*shige追加*/
+{
+  . = ALIGN(4);
+  _sramfunc = .;
+  *(.ramfunc)
+  *(.ramfunc.*)
+  . = ALIGN(4);
+  _eramfunc = .;
+} >RAM AT>FLASH
+
+PROVIDE(_siramfunc = LOADADDR(.ramfunc));
+
+・スタートアップ（startup_ch32v00X.S）でベクタテーブルと関連する関数をフラッシュからＲＡＭへコピーする。
+ベクタテーブルの範囲指定
+	.section  .init, "ax", @progbits
+	.globl  _start
+	.globl  _start_end	//shige追加
+	.align  2
+_start:
+	.option   norvc;
+    j       handle_reset
+    .word   0
+    .word   NMI_Handler                  /* NMI Handler */
+    .word   HardFault_Handler            /* Hard Fault Handler */
+    .word   0
+    .word   0
+    .word   0
+    .word   0
+    .word   0
+    .word   0
+    .word   0
+    .word   0
+    .word   SysTick_Handler             /* SysTick Handler */
+    .word   0
+    .word   SW_Handler                  /* SW Handler */
+    .word   0
+    /* External Interrupts */
+    .word   WWDG_IRQHandler         	/* Window Watchdog */
+    .word   PVD_IRQHandler          	/* PVD through EXTI Line detect */
+    .word   FLASH_IRQHandler        	/* Flash */
+    .word   RCC_IRQHandler          	/* RCC */
+    .word   EXTI7_0_IRQHandler       	/* EXTI Line 7..0 */
+    .word   AWU_IRQHandler              /* AWU */
+    .word   DMA1_Channel1_IRQHandler   	/* DMA1 Channel 1 */
+    .word   DMA1_Channel2_IRQHandler   	/* DMA1 Channel 2 */
+    .word   DMA1_Channel3_IRQHandler   	/* DMA1 Channel 3 */
+    .word   DMA1_Channel4_IRQHandler   	/* DMA1 Channel 4 */
+    .word   DMA1_Channel5_IRQHandler   	/* DMA1 Channel 5 */
+    .word   DMA1_Channel6_IRQHandler   	/* DMA1 Channel 6 */
+    .word   DMA1_Channel7_IRQHandler   	/* DMA1 Channel 7 */
+    .word   ADC1_IRQHandler          	/* ADC1 */
+    .word   I2C1_EV_IRQHandler         	/* I2C1 Event */
+    .word   I2C1_ER_IRQHandler         	/* I2C1 Error */
+    .word   USART1_IRQHandler          	/* USART1 */
+	.word   SPI1_IRQHandler            	/* SPI1 */
+	.word   TIM1_BRK_IRQHandler        	/* TIM1 Break */
+    .word   TIM1_UP_IRQHandler         	/* TIM1 Update */
+    .word   TIM1_TRG_COM_IRQHandler    	/* TIM1 Trigger and Commutation */
+    .word   TIM1_CC_IRQHandler         	/* TIM1 Capture Compare */
+    .word   TIM2_IRQHandler            	/* TIM2 */
+    .word   USART2_IRQHandler          	/* USART2 */
+    .word   OPCM_IRQHandler            	/* OPCM */
+
+_start_end:	//shige追加
+
+ベクタテーブルのコピー
+    /* Copy vector table from Flash to RAM */	//shige追加
+    la      a0, _start
+    la      a1, __ram_vector_start
+    la      a2, _start_end
+
+1:
+    bgeu    a0, a2, 2f
+    lw      t0, 0(a0)
+    sw      t0, 0(a1)
+    addi    a0, a0, 4
+    addi    a1, a1, 4
+    j       1b
+
+2:
+
+関連する関数のコピー
+/* Load ramfunc section from flash to RAM */	//shige追加
+	la a0, _siramfunc
+	la a1, _sramfunc
+	la a2, _eramfunc
+	bgeu a1, a2, 2f
+1:
+	lw t0, (a0)
+	sw t0, (a1)
+	addi a0, a0, 4
+	addi a1, a1, 4
+	bltu a1, a2, 1b
+2:
+
+ＲＡＭ上のベクタテーブルのアドレスをＭＴＶＥＣに設定
+    la t0, __ram_vector_start	//shige追加
+    ori t0, t0, 3
+    csrw mtvec, t0
+
+ＩＳＲと関連する関数にＲＡＭ属性を与える。
+例）ＩＳＲ
+void TIM1_UP_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
+__attribute__((section(".ramfunc")))
+void TIM1_UP_IRQHandler(void)
+{
+
+・具体的なコードはダウンロードファイルを参照。
+
+④留意すべきこと
+
+・当初は、ベクタテーブルとＴＩＭ１のＩＳＲ、及びその中で実行する関数をＲＡＭに置いて、フラッシュの消去／書き込みを行う関数はフラッシュに置いたままにしていた。しかし、それだけでは音声の取りこぼしは解消しなかった。
+
+・フラッシュの消去／書き込みを行う関数がフラッシュ上にあると、フラッシュ側で消去／書き込みが実行されている間は後続の命令のフェッチが待たされ、その間ＣＰＵの動作が待たされ、ＩＳＲの起動も待たされることになる。
+
+・つまり、フラッシュの消去／書き込みを行う関数もＲＡＭ上で実行しないといけないってことだ。そのようにすると、音声の取りこぼしは解消した。
+
+・以上の見解は僕の推定を含んでいるので、有識者に補足をいただきたい。
+
+⑤ファームウェアの改修のみで、ハード（回路図）の変更は無い。
+
+
+【ダウンロード】
+
+設計資料と開発プロジェクトは　<a href="https://drive.google.com/file/d/1mBi4jQlhe46eJ_tvykuz8COROQe_vAzA/view?usp=sharing" target="_blank" title="ここから"><span style="color:#FF0000"><strong>ここから</strong></span></a>　ダウンロードできる。
+
+ディレクトリは　MIMIKURI\MIMIKURI_V006F8P6
+
+プロジェクトは　MIMIKURI_V006F8P6.wvproj
