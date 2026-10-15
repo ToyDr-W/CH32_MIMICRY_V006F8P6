@@ -1,6 +1,4 @@
-## CH32_MIMICRY_V006F8P6
-
-# 🚀 CH32V006用ミミクリーペット音声換装ファームウェア（CH32_MIMICRY_CH32V006F8P6）
+# 🚀 CH32V006用ミミクリーペット音声換装ファームウェア（MIMICRY_V006F8P6）
 
 
 ## 📌 はじめに (Introduction)
