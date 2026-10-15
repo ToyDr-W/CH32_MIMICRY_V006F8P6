@@ -22,7 +22,7 @@
 
 👉 [**名張市つつじが丘おもちゃ病院 元記事を読む**](https://tutujith.blog.fc2.com/blog-entry-1075.html)
 
-- **直通ダウンロード**: `MIMIKURI\MIMIKURI_V006F8P6`
+- **直接ダウンロード**: [GitHub登録時、安定版 Source code (zip) ](https://github.com/ToyDr-W/CH32_MIMICRY_V006F8P6/archive/refs/tags/v1.0.0.zip)
 - **開発プロジェクト**: `MIMIKURI\MIMIKURI_V006F8P6`
 - **ワークスペース/プロジェクトファイル**: `MIMIKURI_V006F8P6.wvproj`
 
