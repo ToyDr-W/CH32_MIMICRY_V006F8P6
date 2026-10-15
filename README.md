@@ -71,6 +71,8 @@ We hope that not only toy doctors but also more software engineers will be inter
 
 ## 📄 Documentation & Disclaimer
 👉 [**Original Blog Post**](https://tutujith.blog.fc2.com/blog-entry-1075.html)  
+
 - **Direct download**: [Stable version when registered on GitHub Source code (zip 3.5MB) ](https://github.com/ToyDr-W/CH32_MIMICRY_V006F8P6/archive/refs/tags/v1.0.0.zip)
+- 
 Project Path: `MIMIKURI\MIMIKURI_V006F8P6` (`MIMIKURI_V006F8P6.wvproj`)  
 Provided "as is" under the **TIM License**.
