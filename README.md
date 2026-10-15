@@ -56,8 +56,10 @@ EasyEDA STDからワン・クリックで一気通貫、JLCPCBに格安発注す
 # 🚀 English Summary (For Global Makers & Toy Doctors)
 
 ## 🚀 Project Overview
-MimicryPet voice-changer firmware for CH32V006. High-quality audio via IMA-ADPCM, ultra-low power (11uA sleep), and open hardware toy repair.
-An open-source firmware to replace broken toy voice-recorder PCBs with an affordable 32-bit RISC-V MCU (**CH32V006F8P6**), based on the work of Nabarishi Tsutsujigaoka Toy Hospital.
+This firmware features a unique voice change function and was developed to replace the entire board with a general-purpose 32-bit RISC-V microcontroller (CH32V006F8P6) in the event of a malfunction in a voice recording/parroting toy.
+
+In order to pass on the advanced knowledge of Nabari City Tsutsujigaoka Toy Hospital (Mr. Shigeyuki Oizumi) to the next generation of doctors, I (ToyDr. Watanabe, representative of "Toy Clinic Yurikago" active in Itoigawa) am responsible for publishing the treatment techniques of senior doctors.
+
 
 ## ✨ Key Technical Benefits
 - **Doubled Sample Rate**: 8 ksps recording and 16 ksps playback.
