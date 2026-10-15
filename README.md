@@ -62,11 +62,12 @@ In order to pass on the advanced knowledge of Nabari City Tsutsujigaoka Toy Hosp
 
 
 ## ✨ Key Technical Benefits
-- **Doubled Sample Rate**: 8 ksps recording and 16 ksps playback.
-- **Enhanced Resolution**: 12-bit ADC and 10-bit PWM equivalent output.
-- **Pop-Noise Elimination**: SRAM-based loop playback.
-- **Recording Time**: Up to 15 seconds.
-- **Ultra-Low Power**: 11 μA in Sleep mode.
+What impresses me is that the firmware is being improved day by day and is being widely released.The repeated playback of the zero-crossing point section of the audio level is one of the developers' ideas, and the noise level has been significantly reduced compared to before.
+
+More recently, the CH32V006F8P6 has adopted the IMA-ADPCM method to compress audio data and maintain sound quality, ensuring a recording time of approximately 15 seconds, and also has microphone amplifier and ADPCM decoder functions implemented in the built-in firmware.
+
+We hope that not only toy doctors but also more software engineers will be interested in this advanced treatment technology.
+
 
 ## 📄 Documentation & Disclaimer
 👉 [**Original Blog Post**](https://tutujith.blog.fc2.com/blog-entry-1075.html)  
