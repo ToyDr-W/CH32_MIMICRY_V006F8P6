@@ -65,6 +65,18 @@ EasyEDA STDからワン・クリックで一気通貫、JLCPCBに格安発注す
 利用は自己責任となります。詳細は同梱の `LICENSE` ファイル（TIMライセンス）をご確認ください。
 
 ---
+
+## 🔄 改訂履歴 (Change Log)
+
+<details>
+<summary>クリックして詳細を展開 / Click to view details</summary>
+
+### 📄 本リポジトリの更新情報
+- **2026/10/16**: v1.0.0 （GitHub開始時、安定版）
+
+</details>
+
+---
 ---
 
 English Summary (For Global Makers & Toy Doctors)
