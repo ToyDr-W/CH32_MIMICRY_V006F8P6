@@ -65,8 +65,9 @@ EasyEDA STDからワン・クリックで一気通貫、JLCPCBに格安発注す
 利用は自己責任となります。詳細は同梱の `LICENSE` ファイル（TIMライセンス）をご確認ください。
 
 ---
+---
 
-# 🚀 English Summary (For Global Makers & Toy Doctors)
+English Summary (For Global Makers & Toy Doctors)
 
 ## 🚀 Project Overview
 This firmware features a unique voice change function and was developed to replace the entire board with a general-purpose 32-bit RISC-V microcontroller (CH32V006F8P6) in the event of a malfunction in a voice recording/parroting toy.
