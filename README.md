@@ -72,7 +72,7 @@ EasyEDA STDからワン・クリックで一気通貫、JLCPCBに格安発注す
 <summary>クリックして詳細を展開 / Click to view details</summary>
 
 ### 📄 本リポジトリの更新情報
-- **2026/10/16**: v1.0.0 （GitHub開始時、安定版）
+- **2026/10/16**: v1.0.0 （GitHub開始時、安定版） 2026/8/21 ＩＭＡ－ＡＤＰＣＭを導入。
 
 </details>
 
