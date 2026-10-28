@@ -73,6 +73,9 @@ EasyEDA STDからワン・クリックで一気通貫、JLCPCBに格安発注す
   <br>
 <img width="45%" alt="261015_MIMICRY_boad (2)" src="https://github.com/user-attachments/assets/4d22de9f-427f-4e07-a99f-dbafa3f58129" />
   <br>
+  <br>
+<img width="45%" alt="CH32_orgel" src="https://github.com/user-attachments/assets/efc07125-70f0-4f49-a1a3-ddd7d5bed610" />
+  <br>
 </p>
 
 ---
