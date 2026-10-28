@@ -1,0 +1,29 @@
+name: 🛠️ Repair Report Auto Reply
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  reply:
+    runs-on: ubuntu-latest
+    # テンプレートで指定した 'repair-report' ラベルが付いているIssueだけに反応させます
+    if: contains(github.event.issue.labels.*.name, 'repair-report')
+    
+    steps:
+      - name: 📝 Post Welcome Comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `おもちゃドクター @${context.payload.issue.user.login} 様
+
+            貴重な「修理報告（カルテ）」をご共有いただき、本当にありがとうございます！大歓迎です！✨
+
+            皆様が創意工夫された回路のカスタマイズやピンアサイン、臨床データの1つひとつが、全国の同志のドクターにとって非常に価値のある知見となります。
+
+            後ほど内容をじっくり拝見させていただきます。まずは見事なマイコン換装・治療の成功、お疲れ様でした！おもちゃたちの未来を繋いでいただき感謝いたします。🛠️🤖`
+            })
