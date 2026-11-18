@@ -32,19 +32,10 @@
 
 この高度な治療技術を、おもちゃドクターのみならず、より多くのソフト技術者の皆さま方にも興味を持っていただければ幸いです。
 
-
-### 📥 最新データのダウンロードについて（v1.2.0正式リリースまで）
-開発元（名張市つつじが丘おもちゃ病院様）の公開ダウンロードファイルは随時更新されます。次のアップデートがあったときは、本リポジトリへの反映は しばらく様子を見て、安定後に **v1.2.0（安定版）** としてリリース予定です。
-
-> それまでの間、最新の回路図およびプログラム一式をダウンロードするには、 リポジトリTOPページ右上にある緑色の [ <> Code ] ボタンをクリックし、メニューの一番下にある Download ZIP から一括ダウンロードできます。 
+### 📥 データのダウンロード方法
+最新の回路図およびプログラム一式をダウンロードするには、 リポジトリ右上にある緑色の **`[ <> Code ]`** ボタンをクリックし、メニューの一番下にある **`Download ZIP`** から一括ダウンロードできます。
 若しくは、[ここをクリックしてください。 ⬇️](https://github.com/ToyDr-W/CH32_MIMICRY_V006F8P6/archive/refs/heads/main.zip)
 ダウンロード（3.5 MBのZIPファイル）が直ちに開始されます。
-
----
-
-### 📥 Downloading the Latest Data (Prior to v1.2.0 Official Release)
-The file made available for download by the developer (Nabari City Tsutsujigaoka Toy Hospital) is updated periodically. When a new update is released, it will not be immediately incorporated into this repository; instead, we will monitor it for a while, and once it has proven stable, we plan to release it as **v1.2.0 (stable version)**.
-> In the meantime, [please click here to download ⬇️](https://github.com/ToyDr-W/CH32_MIMICRY_V006F8P6/archive/refs/heads/main.zip) the latest circuit diagrams and the complete set of programs. The download (3.5 MB ZIP file) will begin immediately.
 
 ---
 
@@ -127,8 +118,12 @@ More recently, the CH32V006F8P6 has adopted the IMA-ADPCM method to compress aud
 
 We hope that not only toy doctors but also more software engineers will be interested in this advanced treatment technology.
 
+### 📥 Downloading the Latest Data
+To download the latest circuit diagrams and the complete set of programs, click the green **`[ <> Code ]`** button at the top right of the repository, then select **`Download ZIP`** from the bottom of the menu to download everything at once.
+> In the meantime, [please click here to download ⬇️](https://github.com/ToyDr-W/CH32_MIMICRY_V006F8P6/archive/refs/heads/main.zip) the latest circuit diagrams and the complete set of programs. The download (3.5 MB ZIP file) will begin immediately.
 
-## 📄 Documentation & Disclaimer
+---
+
 👉 [**Original Blog Post**](https://tutujith.blog.fc2.com/blog-entry-1075.html)  
 
 - **Direct download**: [Stable version when registered on GitHub Source code (zip 3.5MB) ](https://github.com/ToyDr-W/CH32_MIMICRY_V006F8P6/archive/refs/tags/v1.0.0.zip)
